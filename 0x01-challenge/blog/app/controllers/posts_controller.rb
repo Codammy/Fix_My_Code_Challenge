@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   
   def index
-    @posts = Post.all.order('created_at DESC')
+    @post = Post.all.order('created_at DESC')
   end
 
   def new
@@ -25,6 +25,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    Post.online = @post
   end
 
   def update
